@@ -1,8 +1,14 @@
 i = 0
 loop do
-  puts "hello from loop"
+  1 += 1
+
+  if i % 5 == 0
+    next
+  end
+
+  puts "hello from loop #{i}"
+
+
   if i > 20
   break
-end
-  i += 1
 end
