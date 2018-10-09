@@ -1,7 +1,4 @@
-i = 0
-puts "ile razy chcesz wyświetlić słowo witaj?"
-n = gets.to_i
-while i < n
-  puts "witaj"
-  i = i + 1
-end
+puts "podaj kwotę w $"
+dolar = gets .to_f
+wynik = dolar * 3.60
+puts "#{wynik}zł"

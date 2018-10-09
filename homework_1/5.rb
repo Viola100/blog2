@@ -1,15 +1,6 @@
-puts "podaj liczbę do silni"
-
-wynik = 1
-
-i = 1
-
-n = gets.to_i
-
-while n > i
-  i += 1
-  wynik *= i
-
-end
-
-puts "silnia: #{wynik}"
+puts "Podaj dystans w km"
+km = gets.to_f
+spalanie = km * 0.065
+puts "Zużycie paliwa: #{spalanie}"
+koszt = spalanie * 4.30
+puts "koszt: #{koszt} zł"

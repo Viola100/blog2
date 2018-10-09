@@ -1,11 +1,12 @@
-puts "podaj 2 liczby"
-number1 = gets.to_i
-number2 = gets.to_i
-number1 == number2
-  if number1 > number2
-  puts "#{number1} jest większe"
-elsif number1 == number2
-  puts "#{number1} są równe"
-else
-  puts "#{number2} jest większe"
+puts "Podaj liczbę miesiąca"
+days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+loop do
+month = gets.to_i
+if month < 1 || month > 12
+  puts "podaj liczbę od 1 do 12"
+  next
+  else
+puts days[month - 1]
+break
+end
 end
