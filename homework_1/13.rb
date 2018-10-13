@@ -1,9 +1,11 @@
-puts "podaj liczbę, żeby wyświetlić kolejne"
-n = gets.to_i
-while n > 1
-  n = n + 1
-  puts n
-end
+puts "podaj liczbę, żeby wyświetlić poprzednie"
+   n = gets.to_i
+if n > 1
+   (1..n).map do |i|
+   puts "#{i}"
+ end
+ end
+
 if n < 1
-  puts "Liczba musi być > 0"
+    puts "Liczba musi być > 0"
 end
