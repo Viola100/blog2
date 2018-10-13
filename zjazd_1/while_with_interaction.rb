@@ -1,4 +1,3 @@
-y = gets .to_i
 x = 0
 while x < 5
   puts "dzień dobry"
