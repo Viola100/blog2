@@ -1,0 +1,59 @@
+<h1><%= link_to'My Articles', articles_path %></h1>
+<br>
+<br>
+
+    <%= link_to 'New Article', new_article_path %>
+    <%= form_tag articles_path, method: :get do %>
+      <div class="input-group">
+        <%= text_field_tag :q, params[:q], class: "form-control" %>
+          <span class="input-group-btn">
+            <%= submit_tag "Search", class: "btn btn-default" %>
+          </span>
+      </div>
+    <% end %>
+<% if @articles.any? %>
+<h4>Najczęściej komentowany Artykuł:</h4>
+<%= link_to @most_commented.title, article_path(@most_commented) %><br />
+Liczba komentarzy: <%= @most_commented.comments_count %>
+<% end %>
+<br>
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Text</th>
+      <th>Author:</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>Comments:</th>
+    </tr>
+  </thead>
+    <tbody>
+      <% @articles.each do |article| %>
+        <tr class="<%= article.css_class %>">
+          <td><%= article.title %> </td>
+          <td><%= article.text %></td>
+          <td><%= article.user.email %></td>
+          <td><%= link_to 'Show', article_path(article) %></td>
+          <td>
+          <% if article.user == current_user || current_user&.admin? %>
+            <%= link_to 'Edit', edit_article_path(article) %>
+          <% end %>
+          </td>
+          <td>
+          <% if article.user == current_user || current_user&.admin? %>
+            <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure?'} %>
+          <% end %>
+          </td>
+          <td><%= link_to 'Summary', article_path(article), class: 'btn btn-info summary', id: "summary-#{article.id}" %></td>
+          <td><%= article.comments.count %></td
+        </tr>
+      <% end %>
+  </tbody>
+</table>
+<br>
+Articles: <%= @articles.count %>
+<%= paginate @articles, theme: 'twitter-bootstrap-4' %>
